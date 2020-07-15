@@ -9,7 +9,7 @@ const Post = (props) => {
             <img src="https://whatsism.com/uploads/posts/2018-07/1530546770_rmk_vdjbx10.jpg" alt="ava" />
             { props.message }
             <div>
-                <span>Like</span>
+                <span>Like</span> { props.LikesCount }
             </div>
         </div>
     );
