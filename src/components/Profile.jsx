@@ -1,8 +1,9 @@
 import React from 'react';
+import classes from './Profile.module.css'
 
 const Profile = () => {
     return (
-        <div className='content'>
+        <div className={classes.content}>
             <img src='https://www.krym4you.com/files/catalog/138/gallery/big//chernoe-more_1435752144.jpg' />
             <div>
                 ava + description
@@ -12,11 +13,11 @@ const Profile = () => {
                 <div>
                     New post
                 </div>
-                <div>
-                    <div>
+                <div className={classes.posts}>
+                    <div className={classes.item}>
                         post 1
                     </div>
-                    <div>
+                    <div className={classes.item}>
                         post 2
                     </div>
                 </div>
