@@ -3,7 +3,10 @@
     grid-template-columns: 2fr 10fr;
 }
 .dialogsItems {
+    display: block;
+    width: 200px;
     padding: 10px;
+
 }
 .dialogsItems .active {
     color: gold;
@@ -11,7 +14,28 @@
 .messages {
     padding: 10px; 
 }
+ .add_message {
+    /*display: flex;
+    flex-direction: row; */
+    width: 100%;
+    right: 10px;
 
-.messages .message {
-
+}
+/* .textArea {
+    
+} */
+.text_message {
+    width: 300px;
+    height: 100px;
+    resize: none;
+    border-radius: 10px;
+    background-color: thistle;
+    margin: 30px 20px 0px 0px;
+}
+.btn {
+    border-radius: 5px;
+    background-color: green;
+    padding: 5px;
+    width: 150px;
+    margin-left: 155px;
 }
