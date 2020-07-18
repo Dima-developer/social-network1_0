@@ -20,7 +20,7 @@ const MyPosts = (props) => {
                     <textarea></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={ () => { alert('Do you need add post?') }}>Add post</button>
                 </div>
             </div>
             <div className={classes.posts}>

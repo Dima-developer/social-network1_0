@@ -1,0 +1,23 @@
+
+  .friends {
+      display: inline-block;
+      /* display: flex;
+      flex-direction: column; */
+      /* justify-content: space-between; */
+  } 
+  .friendItem {
+      /*display: block;*/
+       display: flex;
+      flex-direction: column;
+      justify-content: space-between; 
+      text-align: center;
+      margin: 10px 10px;
+  }
+ .friendItem img {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    
+ }
+ 
+

@@ -1,0 +1,16 @@
+
+  .friends {
+      color: white;
+      font-size: 32px;
+      margin-top: 35px;
+  } 
+  .friendItem {
+      margin: 10px;
+  }
+ .friendItem img {
+    height: 70px;
+    border-radius: 50%;
+    
+ }
+ 
+

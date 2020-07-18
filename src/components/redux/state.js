@@ -4,7 +4,7 @@ let state = {
         posts: [
             { id: 1, message: 'Hi, how are you?', likesCount: 4 },
             { id: 2, message: "It's my first post", likesCount: 23 }
-        ]        
+        ]
     },
     dialogPage: {
         dialogs: [
@@ -20,8 +20,14 @@ let state = {
             { id: 2, message: 'How is your it-kamasutra?' },
             { id: 3, message: 'Yo' }
         ]
+    },
+    sidebar: {
+        friends: [
+            { id: 1, name: "Julia" },
+            { id: 2, name: "Arina" },
+            { id: 3, name: "Mark" }
+        ]
     }
-
 }
 
 export default state;
