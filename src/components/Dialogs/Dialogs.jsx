@@ -6,19 +6,25 @@ import Message from './Message/Message';
 
 
 const Dialogs = (props) => {
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        props.addPost();
+    }
 
 
+    let dialogsElements = props.dialogPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
 
-    let dialogsElements = props.state.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
-
-    let messagesElements = props.state.messages.map(m => <Message message={m.message} />);
+    let messagesElements = props.dialogPage.messages.map(m => <Message message={m.message} />);
 
     let newMessageElement = React.createRef();
     let addMessage = () => {
-        let text = newMessageElement.current.value;
-        alert(text);
+        props.addMessage();
     }
-
+    let onMessageChange = () => {
+        let message = newMessageElement.current.value;
+        props.updateNewMessageText(message);
+    }
+   
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
@@ -30,7 +36,8 @@ const Dialogs = (props) => {
             <div></div>
             <div className={classes.add_message}>
                 <div className={classes.textArea}>
-                    <textarea ref={newMessageElement} className={classes.text_message}></textarea>
+                    <textarea onChange={onMessageChange} ref={newMessageElement} value={props.dialogPage.newMessageText}
+                        className={classes.text_message}></textarea>
                 </div>
                 <div>
                     <button onClick={addMessage} className={classes.btn}>Add message</button>

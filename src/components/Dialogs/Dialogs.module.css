@@ -27,7 +27,7 @@
 .text_message {
     width: 300px;
     height: 100px;
-    resize: none;
+    /* resize: none; */
     border-radius: 10px;
     background-color: thistle;
     margin: 30px 20px 0px 0px;
