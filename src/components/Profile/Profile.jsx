@@ -10,6 +10,7 @@ const Profile = (props) => {
         <div>
 
             <ProfileInfo />
+            debugger;
             <MyPosts posts={props.profilePage.posts}
                 newPostText={props.profilePage.newPostText}
                 dispatch={props.dispatch} />

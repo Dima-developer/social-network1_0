@@ -2,14 +2,12 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { sendMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/state';
 
 
 
 const Dialogs = (props) => {
-    let newPostElement = React.createRef();
-    let addPost = () => {
-        props.addPost();
-    }
+
 
 
     let dialogsElements = props.dialogPage.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
@@ -17,16 +15,19 @@ const Dialogs = (props) => {
     let messagesElements = props.dialogPage.messages.map(m => <Message message={m.message} />);
 
     let newMessageElement = React.createRef();
-    let addMessage = () => {
-        // props.addMessage();
-        props.dispatch({ type: 'ADD-MESSAGE' })
-    }
-    let onMessageChange = () => {
-        let message = newMessageElement.current.value;
+    let sendMessage = () => {
+        //props.addMessage();
+        props.dispatch(sendMessageActionCreator())
+    };
+
+
+    let onMessageChange = (e) => {
+        let message = e.target.value;
+        //let message = newMessageElement.current.value;
         // props.updateNewMessageText(message);
-        let action = { type: 'UPDATE-NEW-MESSAGE-TEXT', newMessage: message }
+        let action = updateNewMessageTextActionCreator(message);
         props.dispatch(action)
-    }
+    };
 
     return (
         <div className={classes.dialogs}>
@@ -39,11 +40,13 @@ const Dialogs = (props) => {
             <div></div>
             <div className={classes.add_message}>
                 <div className={classes.textArea}>
-                    <textarea onChange={onMessageChange} ref={newMessageElement} value={props.dialogPage.newMessageText}
-                        className={classes.text_message}></textarea>
+                    <textarea onChange={onMessageChange} ref={newMessageElement}
+                        value={props.dialogPage.newMessageText}
+                        className={classes.text_message} placeholder='Enter your message'
+                    ></textarea>
                 </div>
                 <div>
-                    <button onClick={addMessage} className={classes.btn}>Add message</button>
+                    <button onClick={sendMessage} className={classes.btn}>Send message</button>
                 </div>
             </div>
         </div >
