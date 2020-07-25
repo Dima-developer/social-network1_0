@@ -7,11 +7,11 @@ const Dialogs = (props) => {
 
     //let state = props.dialogPage;
     // debugger;
-    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} id={d.id} />);
+    let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />);
 
-    let messagesElements = props.messages.map(m => <Message message={m.message} />);
+    let messagesElements = props.messages.map(m => <Message message={m.message} key={m.id} />);
 
-    let newMessageText = props.mewMessageText;
+    let newMessageText = props.newMessageText;
 
     let newMessageElement = React.createRef();
     let onSendMessageClick = () => {
