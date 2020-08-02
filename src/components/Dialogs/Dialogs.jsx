@@ -2,11 +2,12 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import {Redirect} from "react-router-dom";
 
 const Dialogs = (props) => {
 
     //let state = props.dialogPage;
-    // debugger;
+
     let dialogsElements = props.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id} />);
 
     let messagesElements = props.messages.map(m => <Message message={m.message} key={m.id} />);
@@ -23,6 +24,7 @@ const Dialogs = (props) => {
         props.updateNewMessageText(message);
     };
 
+    if(!props.isAuth)return <Redirect to={"/login"} />;
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
@@ -35,8 +37,8 @@ const Dialogs = (props) => {
             <div className={classes.add_message}>
                 <div className={classes.textArea}>
                     <textarea onChange={onMessageChange} ref={newMessageElement}
-                        value={newMessageText}
-                        className={classes.text_message} placeholder='Enter your message'
+                              value={newMessageText}
+                              className={classes.text_message} placeholder='Enter your message'
                     ></textarea>
                 </div>
                 <div>
