@@ -11,12 +11,10 @@ import {Provider} from "react-redux";
 // let rerenderEntireTree = () => {
 
     ReactDOM.render(
-        <React.StrictMode>
             <Provider store={store}>
                 <App  /> 
                 {/* state={state} dispatch={store.dispatch.bind(store)} store={store} */}
-            </Provider>
-        </React.StrictMode>,
+            </Provider>,
         document.getElementById('root')
     );
 //}
