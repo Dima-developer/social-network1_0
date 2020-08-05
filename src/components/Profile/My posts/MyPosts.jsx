@@ -1,38 +1,36 @@
 import React from 'react';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post';
+import {Field, reduxForm} from "redux-form";
 
+
+let AddNewPostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field name="newPostText" component={"textarea"}/>
+            </div>
+            <div>
+                <button>Add post</button>
+            </div>
+        </form>
+        )
+}
+let AddNewPostFormRedux = reduxForm({form: "profileAddNewPostForm"})(AddNewPostForm);
 
 const MyPosts = (props) => {
-
-    let postsElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount} />);
-
-    let newPostText = props.newPostText;
-
+    let postsElements = props.posts.map(p => <Post message={p.message} key={p.id} likesCount={p.likesCount}/>);
+    /*let newPostText = props.newPostText;*/
     let newPostElement = React.createRef();
 
-    let onAddPost = () => {
-        props.addPost();
-    }
-    let onPostChange = (e) => {
-
-        let text = e.target.value;
-        props.updateNewPostText(text);
+    let onAddPost = (values) => {
+        props.addPost(values.newPostText);
     }
 
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
-            <div>
-                <div>
-                    <textarea onChange={onPostChange} ref={newPostElement} value={newPostText}>
-
-                    </textarea>
-                </div>
-                <div>
-                    <button onClick={onAddPost}>Add post</button>
-                </div>
-            </div>
+            <AddNewPostFormRedux onSubmit={onAddPost}/>
             <div className={classes.posts}>
                 {postsElements}
                 {/* <Post message={posts[0].message} likesCount={posts[0].likesCount} />
@@ -42,4 +40,9 @@ const MyPosts = (props) => {
         </div>
     );
 }
+/*const AddNewPostForm = (props) => {
+    return (
+
+    )
+}*/
 export default MyPosts;
