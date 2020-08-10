@@ -1,31 +1,41 @@
 import {authAPI} from "../api/api";
 import {default as action, stopSubmit} from "redux-form"
+import {getAuthUserData} from "./auth-reducer";
 
-const SET_USER_DATA = 'SET_USER_DATA';
+const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
 
 let initialState = {
-    id: null,
+    initialized: false
+    /*id: null,
     email: null,
     login: null,
     isFetching: false,
-    isAuth: false
+    isAuth: false*/
 };
 
-const authReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USER_DATA:
+        case INITIALIZED_SUCCESS:
             return {
                 ...state,
-                ...action.payload
+                initialized: true
+                /*...action.payload*/
             }
         default:
             return state;
     }
 }
 /*Action Creator*/
-export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}});
+export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 /*Thunk Creator*/
-export const getAuthUserData = () => (dispatch) => {
+export const initializeApp = () => (dispatch) => {
+    let promise = dispatch(getAuthUserData());
+    Promise.all([promise])
+        .then(() => {
+            dispatch(initializedSuccess());
+        });
+}
+/*export const getAuthUserData = () => (dispatch) => {
     authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
@@ -33,7 +43,6 @@ export const getAuthUserData = () => (dispatch) => {
                 dispatch(setAuthUserData(id, email, login, true))
             }
         });
-
 }
 
 export const login = (email, password, rememberMe) => (dispatch) => {
@@ -56,5 +65,5 @@ export const logout = () => (dispatch) => {
                 dispatch(setAuthUserData(null, null, null, false))
             }
         });
-}
-export default authReducer;
+}*/
+export default appReducer;
