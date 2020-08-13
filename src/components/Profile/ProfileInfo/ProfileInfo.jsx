@@ -3,18 +3,15 @@ import classes from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader />
     }
     return (
         <div>
-            {/*<div className={classes.photo}>
-                <img src='https://www.krym4you.com/files/catalog/138/gallery/big//chernoe-more_1435752144.jpg' />
-            </div>*/}
             <div className={classes.descriptionBlock}>
-                <img src={props.profile.photos.large} />
-                <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
+                <img src={profile.photos.large} />
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
             </div>
 
         </div>
