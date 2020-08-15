@@ -1,0 +1,2 @@
+(this["webpackJsonpreact-kamasutra"]=this["webpackJsonpreact-kamasutra"]||[]).push([[4],{302:function(e,a,s){"use strict";s.r(a);s(0);var t=s(142),n=s(107),g=s(12),c=s(141),i=s(8);a.default=Object(i.d)(Object(g.b)((function(e){return{dialogs:e.dialogPage.dialogs,messages:e.dialogPage.messages,newMessageText:e.dialogPage.newMessageText}}),(function(e){return{sendMessage:function(a){e(Object(n.b)(a))}}})),c.a)(t.a)}}]);
+//# sourceMappingURL=4.410001bd.chunk.js.map
