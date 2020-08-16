@@ -4,3 +4,7 @@
 .photo img {
     width: 900px;
 }
+.mainPhoto {
+    max-width: 200px;
+
+}
